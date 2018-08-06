@@ -1,0 +1,17 @@
+---
+title: "Plotly Project"
+author: "Ula Jiang"
+date: "15 May 2018"
+output: html_document
+---
+#Summary
+This document shows the increase weights of chickens when feeding different diets across time. There are 50 chickens and 4 diets. Those 50 chickens are seperated into 4 groups, and each group was fed with one diet.
+
+```{r}
+data(ChickWeight)
+library(plotly)
+g <- ggplot(ChickWeight, aes(x = Time, y = weight, colour = Diet, group = Chick))
+g <- g + geom_line()
+g <- g + facet_grid(. ~ Diet)
+ggplotly(g)
+```
